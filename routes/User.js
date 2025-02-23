@@ -5,9 +5,11 @@ const authMiddleware = require("../middleware/authMiddleware");
 
 // View Profile Route (GET)
 router.get("/profile", authMiddleware(), async (req, res) => {
+  console.log("requets aa gyi");
   try {
     // Extract user ID from JWT token
     const userId = req.user.id;
+    console.log("User ID : ", userId);
 
     // Fetch user details from DB excluding password
     const user = await User.findById(userId).select("-password");
